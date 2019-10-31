@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "V2_EMS_MVC_RepoPattern_InMe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieDatabaseFirst", "MovieDatabaseFirst\MovieDatabaseFirst.csproj", "{875F03A5-C00C-4982-BBBA-D14F1AF25436}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity", "V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity\V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.csproj", "{1200B865-29B5-4638-9EE2-67648F92E44E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity", "V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity\V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.csproj", "{75FCC9D1-5D81-4414-81D0-CFC04CC82287}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{875F03A5-C00C-4982-BBBA-D14F1AF25436}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{875F03A5-C00C-4982-BBBA-D14F1AF25436}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{875F03A5-C00C-4982-BBBA-D14F1AF25436}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1200B865-29B5-4638-9EE2-67648F92E44E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1200B865-29B5-4638-9EE2-67648F92E44E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1200B865-29B5-4638-9EE2-67648F92E44E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1200B865-29B5-4638-9EE2-67648F92E44E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75FCC9D1-5D81-4414-81D0-CFC04CC82287}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75FCC9D1-5D81-4414-81D0-CFC04CC82287}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75FCC9D1-5D81-4414-81D0-CFC04CC82287}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75FCC9D1-5D81-4414-81D0-CFC04CC82287}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
