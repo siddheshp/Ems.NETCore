@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29418.71
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "V1_Ems_.NETCore_MVC_InMemory", "V1_Ems_.NETCore_MVC_InMemory\V1_Ems_.NETCore_MVC_InMemory.csproj", "{467FABDB-0B9D-4CA0-BB55-2CF7D4A664C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "V2_EMS_MVC_RepoPattern_InMemory", "V2_EMS_MVC_RepoPattern_InMemory\V2_EMS_MVC_RepoPattern_InMemory.csproj", "{5D1402AC-E52F-4FB2-871F-55979A2B6F54}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{467FABDB-0B9D-4CA0-BB55-2CF7D4A664C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{467FABDB-0B9D-4CA0-BB55-2CF7D4A664C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{467FABDB-0B9D-4CA0-BB55-2CF7D4A664C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{467FABDB-0B9D-4CA0-BB55-2CF7D4A664C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D1402AC-E52F-4FB2-871F-55979A2B6F54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D1402AC-E52F-4FB2-871F-55979A2B6F54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D1402AC-E52F-4FB2-871F-55979A2B6F54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D1402AC-E52F-4FB2-871F-55979A2B6F54}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1FEADEF7-0915-4882-B3E5-044CD99FC492}
+	EndGlobalSection
+EndGlobal
