@@ -84,12 +84,12 @@ namespace V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Controllers
                 {
                     return View();
                 }
-                bool result =repository.EditActor(actor);
+                bool result = repository.EditActor(actor);
                 if (result)
                 {
                     return RedirectToAction(nameof(Index));
                 }
-                return View();                
+                return View();
             }
             catch
             {
@@ -100,7 +100,12 @@ namespace V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Controllers
         // GET: Actors/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var actor = repository.GetActorById(id);
+            if (actor == null)
+            {
+                return NotFound();
+            }
+            return View(actor);
         }
 
         // POST: Actors/Delete/5
@@ -110,14 +115,43 @@ namespace V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
+                var actor = repository.GetActorById(id);
+                if (actor != null)
+                {
+                    bool result = repository.DeleteActor(actor);
+                    if (result)
+                    {
+                        return RedirectToAction(nameof(Index));
+                    }
+                }
+                return View();
             }
             catch
             {
                 return View();
             }
+        }
+
+        public ActionResult GetActorsByGender()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult GetActorsByGender(Gender gender)
+        {
+            var list = repository.GetActorsByGender(gender);
+            return View(list);
+        }
+
+        public ActionResult GetActorsByMovie()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult GetActorsByMovie(int id)
+        {
+            var list = repository.GetActorsByMovie(id);
+            return View(list);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Data
         IEnumerable<Movie> GetMovies();
         bool AddMovie(Movie movie);
         bool EditMovie(Movie movie);
-        bool DeleteMovie(int movieId);
+        bool DeleteMovie(Movie movie);
         Movie GetMovieById(int movieId);
         IEnumerable<Movie> GetMoviesByGenre(Genre genre);
         IEnumerable<Movie> GetMoviesByActor(int actorId);
@@ -19,7 +19,7 @@ namespace V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Data
         IEnumerable<Actor> GetActors();
         bool AddActor(Actor actor);
         bool EditActor(Actor actor);
-        bool DeleteActor(int actorId);
+        bool DeleteActor(Actor actor);
         Actor GetActorById(int actorId);
         IEnumerable<Actor> GetActorsByGender(Gender gender);
         IEnumerable<Actor> GetActorsByMovie(int movieId);

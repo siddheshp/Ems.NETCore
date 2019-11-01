@@ -50,20 +50,15 @@ namespace V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Data
             }
         }
 
-        public bool DeleteActor(int actorId)
+        public bool DeleteActor(Actor actor)
         {
             try
             {
-                var actor = context.Actors.Find(actorId);
-                if (actor != null)
+                context.Actors.Remove(actor);
+                int result = context.SaveChanges();
+                if (result == 1)
                 {
-                    context.Actors.Remove(actor);
-                    int result = context.SaveChanges();
-                    if (result == 1)
-                    {
-                        return true;
-                    }
-                    return false;
+                    return true;
                 }
                 return false;
             }
@@ -75,6 +70,11 @@ namespace V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Data
         }
 
         public bool DeleteMovie(int movieId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DeleteMovie(Movie movie)
         {
             throw new NotImplementedException();
         }
@@ -124,7 +124,14 @@ namespace V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Data
 
         public IEnumerable<Actor> GetActorsByGender(Gender gender)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return context.Actors.Where(a => a.Gender == gender);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public IEnumerable<Actor> GetActorsByMovie(int movieId)
