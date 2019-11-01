@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Validators;
 
 namespace V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Models
 {
@@ -16,6 +17,7 @@ namespace V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Models
         [Required]
         [DataType(DataType.Date)]
         [DisplayName("Release Date")]
+        [DateValidator]
         public DateTime ReleaseDate { get; set; }
         [Required]
         public Genre Genre { get; set; }

@@ -34,6 +34,7 @@ namespace V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddScoped<IRepository, MovieRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,7 +63,7 @@ namespace V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Movies}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

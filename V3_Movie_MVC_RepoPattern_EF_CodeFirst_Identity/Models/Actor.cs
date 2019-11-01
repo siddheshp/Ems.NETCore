@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Validators;
 
 namespace V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Models
 {
@@ -16,6 +17,7 @@ namespace V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Models
         [Required]
         [DataType(DataType.Date)]
         [DisplayName("Date of Birth")]
+        [DateValidator]
         public DateTime DateOfBirth { get; set; }
         [Required]
         public Gender Gender { get; set; }
