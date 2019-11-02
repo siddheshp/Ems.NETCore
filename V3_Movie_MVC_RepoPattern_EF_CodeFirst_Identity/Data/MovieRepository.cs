@@ -136,7 +136,14 @@ namespace V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Data
 
         public IEnumerable<Actor> GetActorsByMovie(int movieId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return context.Actors.Where(a => a.Movie.Id == movieId).ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public Movie GetMovieById(int movieId)

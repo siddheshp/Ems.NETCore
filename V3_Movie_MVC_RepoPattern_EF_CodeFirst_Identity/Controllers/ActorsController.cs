@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Data;
 using V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Models;
+using V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.ViewModels;
 
 namespace V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Controllers
 {
@@ -145,13 +147,23 @@ namespace V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Controllers
 
         public ActionResult GetActorsByMovie()
         {
-            return View();
+            var viewModel = new MovieActorsViewModel
+            {
+                Movies = repository.GetMovies().Select(m =>
+                        new SelectListItem(m.Name, m.Id.ToString())).ToList()
+            };
+            return View(viewModel);
         }
         [HttpPost]
         public ActionResult GetActorsByMovie(int id)
         {
-            var list = repository.GetActorsByMovie(id);
-            return View(list);
+            var viewModel = new MovieActorsViewModel
+            {
+                Movies = repository.GetMovies().Select(m =>
+                        new SelectListItem(m.Name, m.Id.ToString())).ToList(),
+                Actors = repository.GetActorsByMovie(id)
+            };
+            return View(viewModel);
         }
     }
 }
