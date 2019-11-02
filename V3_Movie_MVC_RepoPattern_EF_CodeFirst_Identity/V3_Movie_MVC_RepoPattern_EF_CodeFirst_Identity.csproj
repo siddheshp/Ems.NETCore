@@ -8,6 +8,8 @@
   <ItemGroup>
     <Compile Remove="Data\Migrations\20191101062703_AddedModels.cs" />
     <Compile Remove="Data\Migrations\20191101062703_AddedModels.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191102073229_movieactorChnage.cs" />
+    <Compile Remove="Data\Migrations\20191102073229_movieactorChnage.Designer.cs" />
   </ItemGroup>
 
 

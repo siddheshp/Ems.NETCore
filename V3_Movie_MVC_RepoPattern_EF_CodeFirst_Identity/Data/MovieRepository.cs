@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Models;
+using V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.ViewModels;
 
 namespace V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Data
 {
@@ -32,17 +33,24 @@ namespace V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Data
             }
         }
 
-        public bool AddMovie(Movie movie)
+        public bool AddMovie(MovieViewModel movieViewModel)
         {
             try
             {
-                context.Movies.Add(movie);
-                int result = context.SaveChanges();
-                if (result == 1)
+                context.Movies.Add(movieViewModel.Movie);
+                //for every actor selected
+                foreach (var actor in movieViewModel.Actors)
                 {
-                    return true;
+                    if (actor.Selected)
+                    {
+                        var existingActor = context.Actors.Find(
+                            Convert.ToInt32(actor.Value));
+                        existingActor.Movie = movieViewModel.Movie;
+                        context.SaveChanges();
+                    }
                 }
-                return false;
+                context.SaveChanges();
+                return true;
             }
             catch (Exception)
             {
@@ -71,12 +79,20 @@ namespace V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Data
 
         public bool DeleteMovie(int movieId)
         {
-            throw new NotImplementedException();
-        }
+            try
+            {
+                var movie = context.Movies.Include(m => m.Actors)
+                    .ToList().Find(m => m.Id == movieId);
+                movie.Actors.Clear();
+                context.Movies.Remove(movie);
+                context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
 
-        public bool DeleteMovie(Movie movie)
-        {
-            throw new NotImplementedException();
+                throw;
+            }
         }
 
         public bool EditActor(Actor actor)
@@ -100,9 +116,34 @@ namespace V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Data
 
         }
 
-        public bool EditMovie(Movie movie)
+        public bool EditMovie(MovieViewModel viewModel)
         {
-            throw new NotImplementedException();
+            try
+            {
+                context.Entry<Movie>(viewModel.Movie).State =
+                            EntityState.Modified;
+                //for every actor selected
+                foreach (var actor in viewModel.Actors)
+                {
+                    var existingActor = context.Actors.Find(
+                               Convert.ToInt32(actor.Value));
+                    if (actor.Selected)
+                    {
+                        existingActor.Movie = viewModel.Movie;
+                    }
+                    else
+                    {
+                        existingActor.Movie = null;
+                    }
+                    context.SaveChanges();
+                }
+                context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         public Actor GetActorById(int actorId)
@@ -148,17 +189,34 @@ namespace V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Data
 
         public Movie GetMovieById(int movieId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return context.Movies.Find(movieId);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public IEnumerable<Movie> GetMovies()
         {
-            return context.Movies.ToList();
+            return context.Movies.Include(m => m.Actors);
         }
 
         public IEnumerable<Movie> GetMoviesByActor(int actorId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var actor = context.Actors.Find(actorId);
+                //return context.Movies.Join(context.Actors,a=>a.Id, m=>m.;
+                return context.Movies.ToList().FindAll(
+                    m => m.Actors.Where(a => a.Id == actorId).FirstOrDefault());
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         public IEnumerable<Movie> GetMoviesByGenre(Genre genre)

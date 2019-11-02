@@ -24,7 +24,7 @@ namespace V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Models
         [Required]
         [Range(1, 10, ErrorMessage = "Rating should be between 1 and 10")]
         public decimal Rating { get; set; }
-        [Required]
+
         public ICollection<Actor> Actors { get; set; }
     }
 }
