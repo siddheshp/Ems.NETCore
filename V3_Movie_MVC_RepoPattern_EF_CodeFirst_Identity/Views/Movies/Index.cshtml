@@ -55,8 +55,11 @@
                         @Html.DisplayFor(modelItem => item.Rating)
                     </td>
                     <td>
-                        @Html.Display(String.Join<string>(",", 
-                            item.Actors.Select(a => a.Name).ToArray()))
+                        @{
+                            var actors = String.Join<string>(", ",
+                            item.Actors.Select(a => a.Name).ToArray());
+                        }
+                        @Html.DisplayFor(modelItem => actors)
                     </td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

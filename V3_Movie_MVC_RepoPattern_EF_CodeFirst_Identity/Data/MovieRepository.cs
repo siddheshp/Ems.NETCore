@@ -208,10 +208,16 @@ namespace V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Data
         {
             try
             {
-                var actor = context.Actors.Find(actorId);
-                //return context.Movies.Join(context.Actors,a=>a.Id, m=>m.;
-                return context.Movies.ToList().FindAll(
-                    m => m.Actors.Where(a => a.Id == actorId).FirstOrDefault());
+                //var movies = from m in context.Movies
+                //             join a in context.Actors on m.Id equals a.Movie.Id
+                //             select m;
+                //return movies.ToList();
+
+                var movies1 = context.Movies.Join(
+                    context.Actors, m => m.Id,
+                    a => a.Movie.Id, (m, a) => m);
+                return movies1.ToList();
+
             }
             catch (Exception ex)
             {
