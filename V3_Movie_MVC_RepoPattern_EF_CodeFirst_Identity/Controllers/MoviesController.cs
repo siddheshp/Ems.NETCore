@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -31,6 +32,7 @@ namespace V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Controllers
             return View();
         }
 
+        [Authorize]
         // GET: Movies/Create
         public ActionResult Create()
         {
@@ -42,6 +44,7 @@ namespace V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Controllers
             return View(viewModel);
         }
 
+        [Authorize]
         // POST: Movies/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -70,6 +73,7 @@ namespace V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Controllers
             }
         }
 
+        [Authorize]
         // GET: Movies/Edit/5
         public ActionResult Edit(int id)
         {
@@ -88,6 +92,7 @@ namespace V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Controllers
             return View(viewModel);
         }
 
+        [Authorize]
         // POST: Movies/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -126,6 +131,7 @@ namespace V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Controllers
             }
         }
 
+        [Authorize]
         // GET: Movies/Delete/5
         public ActionResult Delete(int id)
         {
@@ -137,6 +143,7 @@ namespace V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Controllers
             return View(movie);
         }
 
+        [Authorize]
         // POST: Movies/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -166,6 +173,7 @@ namespace V3_Movie_MVC_RepoPattern_EF_CodeFirst_Identity.Controllers
             };
             return View(viewModel);
         }
+
         [HttpPost]
         public ActionResult GetMoviesByActor(int id)
         {
