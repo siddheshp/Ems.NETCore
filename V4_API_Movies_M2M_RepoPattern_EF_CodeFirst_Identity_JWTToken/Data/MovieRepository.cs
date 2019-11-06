@@ -105,6 +105,15 @@ namespace V4_API_Movies_M2M_RepoPattern_EF_CodeFirst_Identity_JWTToken.Data
             return context.Actors.ToList();
         }
 
+        public IEnumerable<Actor> GetActorsByMovie(int movieId)
+        {
+            var actors = from a in context.Actors
+                         join ma in context.MovieActors on a.Id equals ma.ActorId
+                         where ma.MovieId == movieId
+                         select a;
+            return actors;
+        }
+
         public Movie GetMovie(int id)
         {
             return context.Movies.Find(id);
@@ -113,6 +122,20 @@ namespace V4_API_Movies_M2M_RepoPattern_EF_CodeFirst_Identity_JWTToken.Data
         public IEnumerable<Movie> GetMovies()
         {
             return context.Movies.Include(m => m.MovieActors);
+        }
+
+        public IEnumerable<Movie> GetMoviesByActor(int actorId)
+        {
+            var movies = from m in context.Movies
+                         join ma in context.MovieActors on m.Id equals ma.MovieId
+                         where ma.ActorId == actorId
+                         select m;
+            return movies;
+        }
+
+        public IEnumerable<Movie> GetMoviesByGenre(Genre genre)
+        {
+            return context.Movies.Where(m => m.Genre == genre);
         }
 
         public bool UpdateActor(Actor actor)

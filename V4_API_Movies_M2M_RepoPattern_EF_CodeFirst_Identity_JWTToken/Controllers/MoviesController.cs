@@ -87,5 +87,37 @@ namespace V4_API_Movies_M2M_RepoPattern_EF_CodeFirst_Identity_JWTToken.Controlle
             }
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
+
+        [HttpGet("actor/{id}")]
+        //GET api/movies/actor/1
+        //GET api/movies/actor?id=1
+        public IActionResult MoviesByActor(int id)
+        {
+            var movies = repository.GetMoviesByActor(id);
+            if (!movies.Any())
+            {
+                return NoContent();
+            }
+            return Ok(movies);
+        }
+
+        [HttpGet("genre/{id}")]
+        //GET api/movies/genre/1
+        //GET api/movies/genre?id=1
+        public IActionResult MoviesByGenre(int id)
+        {
+            bool isValid = Enum.IsDefined(typeof(Genre), id);
+            if (!isValid)
+            {
+                return BadRequest("Invalid genre");
+            }
+
+            var movies = repository.GetMoviesByGenre((Genre)id);
+            if (!movies.Any())
+            {
+                return NoContent();
+            }
+            return Ok(movies);
+        }
     }
 }

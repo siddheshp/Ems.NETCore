@@ -91,5 +91,15 @@ namespace V4_API_Movies_M2M_RepoPattern_EF_CodeFirst_Identity_JWTToken.Controlle
             }
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
+        [HttpGet("movie?id={id}&name={name}")]
+        public IActionResult ActorsByMovie(int id, string name)
+        {
+            var actors = repository.GetActorsByMovie(id);
+            if (!actors.Any())
+            {
+                return NoContent();
+            }
+            return Ok(actors);
+        }
     }
 }
