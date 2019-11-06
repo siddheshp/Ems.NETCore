@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using V4_API_Movies_M2M_RepoPattern_EF_CodeFirst_Identity_JWTToken.Data;
@@ -11,6 +12,7 @@ namespace V4_API_Movies_M2M_RepoPattern_EF_CodeFirst_Identity_JWTToken.Controlle
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ActorsController : ControllerBase
     {
         IRepository repository;
@@ -91,8 +93,8 @@ namespace V4_API_Movies_M2M_RepoPattern_EF_CodeFirst_Identity_JWTToken.Controlle
             }
             return StatusCode(StatusCodes.Status500InternalServerError);
         }
-        [HttpGet("movie?id={id}&name={name}")]
-        public IActionResult ActorsByMovie(int id, string name)
+        [HttpGet("movie/{id}")]
+        public IActionResult ActorsByMovie(int id)
         {
             var actors = repository.GetActorsByMovie(id);
             if (!actors.Any())
